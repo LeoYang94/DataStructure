@@ -335,7 +335,86 @@ public:
       return false;
 
   }
+  /**7-4
+   *
+   * @return
+   */
+  class solution3{
+  public:
+      vector<string>binaryTreePaths(TreeNode* root){
+          vector<string>res;
+          if(root == NULL)
+              return res;
+          if(root->left == NULL && root->right ==NULL){
+              res.push_back(to_string(root->val));
+              return res;
+          }
+          vector<string> leftS = binaryTreePaths(root->left);
+          for(int i = 0;i < leftS.size();++i)
+              res.push_back(to_string(root->val) + "->" + leftS[i]);
+          vector<string> rightS = binaryTreePaths(root->right);
+          for(int i = 0;i < rightS.size();++i)
+              res.push_back(to_string(root->val) + "->" + rightS[i]);
+      }
+  };
 
+  /**7-5
+   *
+   * @return
+   */
+   class solution4{
+   public:
+       //在以root为根节点的二叉树中，寻找和为sum的路径，返回这样的路径个数
+       int pathsum(TreeNode* root ,int sum){
+           if(root == NULL)
+               return 0;
+           int res = findPath(root,sum);//包含这个节点其和为sum的值
+           res += pathsum(root->left,sum);
+           res += pathsum(root->right,sum);
+           return res;
+       }
+
+   private:
+       //在以node为根节点的二叉树中，寻找包含node的路径，和为sum
+       //返回这样的路径个数
+       int findPath(TreeNode* node ,int num){
+           if(node == NULL)
+               return 0;
+           int res = 0;
+           if(node->val = num)
+               res+=1;
+           res += findPath(node->left,num - node->val);
+           res += findPath(node->right,num - node->val);
+
+       }
+   };
+
+   /**7-6 二分搜索树找公共祖先
+    *
+    * @return
+    */
+    class solution5{
+        TreeNode* lowestCommonAncestor(TreeNode* root,TreeNode *p,TreeNode* q){
+            assert( p!= NULL && q!= NULL)
+            if(p->val < root->val && q->val < root->val)
+                return lowestCommonAncestor(root->left,p ,q);
+            if(p->val > root->val && q->val > root->val )
+                return lowestCommonAncestor(root->right,p,q);
+            return root;
+        }
+    };
+    /**8-1 Leecode17 letter combinations  of a phone number
+     *
+     * @return
+     */
+     class solution6{
+     public:
+
+     };
+int main()
+{
+    return 0;
+}
 
 //#include <iostream>
 //#include <iterator>
