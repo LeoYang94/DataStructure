@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bot/code/DataStructure/src/main.cpp
+iostream
+-
+iterator
+-
+cstdio
+-
+algorithm
+-
+algorithm
+-
+opencv2/opencv.hpp
+-
+iomanip
+-
+vector
+-
+math.h
+-
+cmath
+-
+forward_list
+-
+stack
+-
+stdexcept
+-
+
